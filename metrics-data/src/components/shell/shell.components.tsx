@@ -1,12 +1,10 @@
 // Styles
-import {
-    ShellContainer,
-    Title
-} from './shell.styles';
+import { ShellContainer } from './shell.styles';
 
 // Utilities
 import useGetMetricsData from '../../hooks/useGetMetricsData';
 import OverallSection from '../overall-section';
+import { useState } from 'react';
 
 
 /**
@@ -15,11 +13,16 @@ import OverallSection from '../overall-section';
 const Shell = () => {
     const { metricsData, isLoading } = useGetMetricsData();
 
+    const [selectedDataPointID, setSelectedDataPointID] = useState<string>();
+
     return (
         <ShellContainer>
-            <Title>Metrics Data</Title>
+            <h1>Metrics Data</h1>
 
-            <OverallSection data={metricsData} />
+            <OverallSection
+                data={metricsData}
+                selectedDataPointID={selectedDataPointID}
+            />
         </ShellContainer>
     );
 };
