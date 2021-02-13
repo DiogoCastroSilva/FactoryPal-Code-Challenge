@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
         font-size: ${sizes.normal}
         letter-spacing: 0.5px;
         font-family: ${fonts.PRIMARY};
+        background-color: ${colors.bg};
     }
 
     h1 {
@@ -29,5 +30,12 @@ export const GlobalStyles = createGlobalStyle`
         font-weight: ${weights.light};
         size: ${sizes.medium};
         color: ${colors.green}
+    }
+
+    h4 {
+        font-family: ${fonts.PRIMARY};
+        font-weight: ${weights.light};
+        size: ${sizes.medium};
+        color: ${colors.lightGrey}
     }
 `;

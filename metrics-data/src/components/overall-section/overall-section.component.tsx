@@ -1,14 +1,12 @@
 // Libraries
 import { FC } from 'react';
 
-// Styles
-import { OverallContainer, Title } from './overall-section.styles';
-
 // Components
 import MetricsTable from "../metrics-table";
 
 // Utilities
 import { MetricsData } from '../../types';
+import Section from '../section';
 
 
 
@@ -21,13 +19,14 @@ interface OverallSectionProps {
  * Section of the page that will display overall data in a table
  */
 const OverallSection: FC<OverallSectionProps> = ({ data, selectedDataPointID }) =>(
-    <OverallContainer>
-        <Title>Overall Data</Title>
+    <Section
+        title="Overall Data"
+    >
         <MetricsTable
             data={data}
             selectedRowID={selectedDataPointID}
         />
-    </OverallContainer>
+    </Section>
 );
 
 export default OverallSection;

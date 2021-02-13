@@ -1,5 +1,6 @@
 import { AlertType } from '../components/alert/alert.component';
 import { colors } from '../theme';
+import { Category } from '../types';
 
 
 /**
@@ -17,6 +18,33 @@ export function getColorByAlertType(type: AlertType) {
             break;
         default:
             color = colors.blue;
+            break;
+    };
+
+    return color;
+};
+
+/**
+ * Will return the color for the category
+ * This color could come from the server
+ *
+ * @param category Category
+ */
+export function getColorByCategory(category?: Category) {
+    let color: string;
+
+    switch(category) {
+        case "efficiency":
+            color = colors.blue
+            break;
+        case 'downtime':
+            color = colors.orange;
+            break;
+        case 'shift':
+            color = colors.yellow;
+            break;
+        default:
+            color = colors.lightGrey;
             break;
     };
 
