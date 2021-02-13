@@ -1,5 +1,14 @@
-export const fonts = {};
+export const fonts = {
+    PRIMARY: 'Roboto, sans-serif'
+};
 
-export const weights = {};
+export const weights = {
+    bold: '750',
+    light: '550'
+};
 
-export const sizes = {};
+export const sizes = {
+    big: '96px',
+    medium: '60px',
+    normal: '16px'
+};
