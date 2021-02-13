@@ -8,4 +8,8 @@ export const SectionContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    @media (max-width: 700px) {
+            flex-direction: column;
+    }
 `;

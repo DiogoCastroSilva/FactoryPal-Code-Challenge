@@ -26,7 +26,6 @@ interface EfficiencySectionProps {
 
 /**
  * Efficiency section, composed of Metrics data and chart representation
- * @param data: Shift metrics data
  */
 const EfficiencySection: FC<EfficiencySectionProps> = ({ data, onChartClick }) =>{
     const [oee, setOEE] = useState<MetricsData>();

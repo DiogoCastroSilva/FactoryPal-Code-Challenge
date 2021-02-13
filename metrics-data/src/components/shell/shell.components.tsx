@@ -8,6 +8,7 @@ import { ShellContainer } from './shell.styles';
 import EfficiencySection from '../efficiency-section';
 import ShiftSection from '../shift-section';
 import OverallSection from '../overall-section';
+import DowntimeSection from '../downtime-section';
 
 // Utilities
 import useGetMetricsData from '../../hooks/useGetMetricsData';
@@ -64,6 +65,13 @@ const Shell = () => {
                                     data={categoriesMap['shift']}
                                     onChartClick={setSelectedDataPointHandler}
                                 />
+                        }
+
+                        if (key === 'downtime') {
+                            return <DowntimeSection
+                                            data={categoriesMap['downtime']}
+                                            onChartClick={setSelectedDataPointHandler}
+                                        />
                         }
                     }
                 })

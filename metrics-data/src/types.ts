@@ -17,3 +17,11 @@ export type Category = 'efficiency' | 'shift' | 'downtime';
 export interface APIData<T> {
     data: Array<T>;
 }
+
+export interface ChartData extends Base {
+    angle: number;
+    label: string;
+    style: {
+        fill: string;
+    }
+};

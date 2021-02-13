@@ -29,10 +29,10 @@ const MetricsSection: FC<MetricsSectionProps> = ({ title, renderMetrics, renderC
     <Section title={title}>
         <MetricsCardContainer>
             {renderMetrics()}
-    </MetricsCardContainer>
-    <MetricsChartContainer>
-        {renderChart()}
-    </MetricsChartContainer>
+        </MetricsCardContainer>
+        <MetricsChartContainer>
+            {renderChart()}
+        </MetricsChartContainer>
     </Section>
 );
 

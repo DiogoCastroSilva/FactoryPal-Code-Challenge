@@ -8,18 +8,10 @@ import MetricsCard from '../metrics-card';
 import MetricsCardValue from '../metrics-card-value';
 
 // Utilities
-import { Base, MetricsData } from '../../types';
+import { ChartData, MetricsData } from '../../types';
 import { getColorByCategory } from '../../utils/getColor';
 import { getSecondsFromType } from '../../utils/getTime';
 
-
-interface ChartData extends Base {
-    angle: number;
-    label: string;
-    style: {
-        fill: string;
-    }
-};
 
 interface ShiftSectionProps {
     data: MetricsData[];
@@ -28,7 +20,6 @@ interface ShiftSectionProps {
 
 /**
  * Shift section, composed of Metrics data and chart representation
- * @param data: Shift metrics data
  */
 const ShiftSection: FC<ShiftSectionProps> = ({ data, onChartClick }) => {
     const [clnShift, seClnShift] = useState<MetricsData>();
@@ -51,19 +42,14 @@ const ShiftSection: FC<ShiftSectionProps> = ({ data, onChartClick }) => {
         const percentageData = setChartData();
 
         if (percentageData) {
-            setChartValues(percentageData.map(percentage => ({
-                id: percentage.id,
-                angle: percentage.percentage,
-                label: percentage.label,
-                style: {
-                    fill: percentage.fill,
-                    stroke: 'transparent'
-                }
-            })));
+            setChartValues(percentageData);
         }
 
     }, [clnShift, shiftDuration]);
 
+    /**
+     * Creates the data for the Chart
+     */
     const setChartData = () => {
         if (clnShift && shiftDuration) {
             const clShiftValueInSeconds = getSecondsFromType(clnShift.value, clnShift.type);
@@ -73,14 +59,22 @@ const ShiftSection: FC<ShiftSectionProps> = ({ data, onChartClick }) => {
 
             return [
                 {
-                    percentage: clShiftPercentage,
-                    fill: getColorByCategory('shift'),
-                    ...clnShift
+                    id: clnShift.id,
+                    angle: clShiftPercentage,
+                    label: clnShift.label,
+                    style: {
+                        fill: getColorByCategory('shift'),
+                        stroke: 'transparent'
+                    }
                 },
                 {
-                    percentage: 1 - clShiftPercentage,
-                    fill: getColorByCategory(),
-                    ...shiftDuration
+                    id: shiftDuration.id,
+                    angle: 1 - clShiftPercentage,
+                    label: shiftDuration.label,
+                    style: {
+                        fill: getColorByCategory(),
+                        stroke: 'transparent'
+                    }
                 }
             ];
         }
