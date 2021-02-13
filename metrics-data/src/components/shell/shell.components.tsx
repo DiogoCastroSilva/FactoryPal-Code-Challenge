@@ -6,6 +6,7 @@ import {
 
 // Utilities
 import useGetMetricsData from '../../hooks/useGetMetricsData';
+import OverallSection from '../overall-section';
 
 
 /**
@@ -17,6 +18,8 @@ const Shell = () => {
     return (
         <ShellContainer>
             <Title>Metrics Data</Title>
+
+            <OverallSection data={metricsData} />
         </ShellContainer>
     );
 };
