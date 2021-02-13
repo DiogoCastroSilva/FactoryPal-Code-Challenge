@@ -30,4 +30,11 @@ export const GlobalStyles = createGlobalStyle`
         size: ${sizes.medium};
         color: ${colors.green}
     }
+
+    h4 {
+        font-family: ${fonts.PRIMARY};
+        font-weight: ${weights.light};
+        size: ${sizes.medium};
+        color: ${colors.lightGrey}
+    }
 `;
