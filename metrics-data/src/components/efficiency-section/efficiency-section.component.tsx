@@ -3,19 +3,19 @@ import { FC, useEffect, useState } from 'react';
 import { RadialChart } from 'react-vis';
 
 import {
-    EfficiencySectionContainer,
     MetricsCardContainer,
-    MetricsChartContainer,
-    MetricsContainer
+    MetricsChartContainer
 } from './efficiency-section.styles';
 
 // Components
 import MetricsCardValue from "../metrics-card-value";
+import Section from '../section';
 
 // Utilities
 import { MetricsData } from "../../types";
 import MetricsCard from "../metrics-card";
 import { getColorByCategory } from '../../utils/getColor';
+import MetricsSection from '../metrics-section';
 
 
 
@@ -24,7 +24,10 @@ interface EfficiencySectionProps {
     onChartClick: (id: string) => void;
 }
 
-
+/**
+ * Efficiency section, composed of Metrics data and chart representation
+ * @param data: Shift metrics data
+ */
 const EfficiencySection: FC<EfficiencySectionProps> = ({ data, onChartClick }) =>{
     const [oee, setOEE] = useState<MetricsData>();
     const [sl, setSL] = useState<MetricsData>();
@@ -45,11 +48,9 @@ const EfficiencySection: FC<EfficiencySectionProps> = ({ data, onChartClick }) =
         });
     }, [data]);
 
-    return (
-        <EfficiencySectionContainer>
-            <h2>Efficiency</h2>
-            <MetricsContainer>
-                <MetricsCardContainer>
+    return <MetricsSection
+                title="Efficiency"
+                renderMetrics={() => (
                     <MetricsCard>
                         {oee ? (
                             <MetricsCardValue
@@ -78,44 +79,41 @@ const EfficiencySection: FC<EfficiencySectionProps> = ({ data, onChartClick }) =
                             />
                         ) : null}
                     </MetricsCard>
-                </MetricsCardContainer>
-
-                <MetricsChartContainer>
-                    {oee ? (
-                             <RadialChart
-                                height={300}
-                                width={300}
-                                showLabels={true}
-                                onValueClick={(e) => {
-                                    console.log(e);
-                                    if (e && e.id) {
-                                        onChartClick(e.id)
-                                    }
-                                }}
-                                data={[
-                                    {
-                                        angle: oee.value,
-                                        label: oee.label,
-                                        id: oee.id,
-                                        style: {
-                                            fill: getColorByCategory('efficiency'),
-                                            stroke: 'transparent'
-                                        }
-                                    },
-                                    {
-                                        angle: 1 - oee.value,
-                                        style: {
-                                            fill: getColorByCategory(),
-                                            stroke: 'transparent'
-                                        }
-                                    }
-                                ]}
-                            />
-                    ): null}
-                </MetricsChartContainer>
-            </MetricsContainer>
-        </EfficiencySectionContainer>
-    );
+                )}
+                renderChart={() => (
+                    oee ? (
+                        <RadialChart
+                           height={200}
+                           width={200}
+                           showLabels={true}
+                           onValueClick={(e) => {
+                               console.log(e);
+                               if (e && e.id) {
+                                   onChartClick(e.id)
+                               }
+                           }}
+                           data={[
+                               {
+                                   angle: oee.value,
+                                   label: oee.label,
+                                   id: oee.id,
+                                   style: {
+                                       fill: getColorByCategory('efficiency'),
+                                       stroke: 'transparent'
+                                   }
+                               },
+                               {
+                                   angle: 1 - oee.value,
+                                   style: {
+                                       fill: getColorByCategory(),
+                                       stroke: 'transparent'
+                                   }
+                               }
+                           ]}
+                       />
+                    ): null
+                )}
+            />
 }
 
 export default EfficiencySection;

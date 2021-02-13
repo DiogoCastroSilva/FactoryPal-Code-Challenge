@@ -7,7 +7,7 @@ import {
     MetricValueContainer,
     ArrowContainer
  } from './metrics-card-value.styles';
- 
+
  // Utilities
 import { getArrow } from '../../utils/getArrow';
 
@@ -21,6 +21,9 @@ interface MetricsCardValueProps {
     showIcon?: boolean;
 }
 
+/**
+ * Metrics Card, will show the metrics value according to the inputs
+ */
 const MetricsCardValue: FC<MetricsCardValueProps> = ({
     title,
     value,

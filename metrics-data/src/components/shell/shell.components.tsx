@@ -1,15 +1,20 @@
+// Libraries
+import { useEffect, useState } from 'react';
+
 // Styles
 import { ShellContainer } from './shell.styles';
 
+// Components
+import EfficiencySection from '../efficiency-section';
+import ShiftSection from '../shift-section';
+import OverallSection from '../overall-section';
+
 // Utilities
 import useGetMetricsData from '../../hooks/useGetMetricsData';
-import OverallSection from '../overall-section';
-import { useEffect, useState } from 'react';
-import EfficiencySection from '../efficiency-section';
-import { Category, MetricsData } from '../../types';
+import { MetricsData } from '../../types';
 
 
-type CategoriesMap = { [key: string]: MetricsData[] };
+export type CategoriesMap = { [key: string]: MetricsData[] };
 
 /**
  * This is the Shell of this application, will contain all the logic to display the data
@@ -45,12 +50,24 @@ const Shell = () => {
         <ShellContainer>
             <h1>Metrics Data</h1>
             {categoriesMap ? (
-                 categoriesMap.hasOwnProperty('efficiency') ? (
-                     <EfficiencySection
-                        data={categoriesMap['efficiency']}
-                        onChartClick={setSelectedDataPointHandler}
-                     />
-                 ) : null
+                Object.keys(categoriesMap).map(key => {
+                    if (key) {
+                        if (key === 'efficiency') {
+                               return <EfficiencySection
+                                    data={categoriesMap['efficiency']}
+                                    onChartClick={setSelectedDataPointHandler}
+                                />
+                        }
+
+                        if (key === 'shift') {
+                                return <ShiftSection
+                                    data={categoriesMap['shift']}
+                                    onChartClick={setSelectedDataPointHandler}
+                                />
+                        }
+                    }
+                })
+
             ) : null}
 
             <OverallSection

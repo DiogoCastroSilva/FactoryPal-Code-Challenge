@@ -10,7 +10,7 @@ export interface MetricsData extends Base {
     category: Category;
 }
 
-export type ValueType = 'percentage' | 'number' | 'secs' | 'hours';
+export type ValueType = 'percentage' | 'number' | 'secs' | 'minutes' | 'hours';
 
 export type Category = 'efficiency' | 'shift' | 'downtime';
 

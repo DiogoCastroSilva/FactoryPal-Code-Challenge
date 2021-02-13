@@ -14,6 +14,9 @@ interface MetricsTableProps {
     selectedRowID?: string;
 }
 
+/**
+ * Creates a table for the metrics data
+ */
 const MetricsTable: FC<MetricsTableProps> = ({ data, selectedRowID }) => (
     <Table
         columns={[
