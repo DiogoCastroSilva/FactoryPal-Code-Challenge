@@ -4,6 +4,9 @@ This app is built for FactoryPal as a code challenge for a Front-End position.
 
 ### Challenge
 
+![Screenshot of the application](./images/metrics-chart.png)
+![Screenshot of the application](./images/metrics-table.png)
+
 Develop a UI for the metrics data supplied.
 
 Typically, the metric data are served from a microservice over HTTP.
@@ -22,11 +25,12 @@ src/
  ├── components/ ................. the app building blocks
  │   └── ...
  │-- hooks/ ...................... custom Hooks
+ | -- icons/ ...................... contains svg icons
  │-- providers/ .................. custom Providers
  │   └── ...
  |-- utils/ ...................... utility functions
  |   └── ...
- ├── theme/
+ ├── theme/ ...................... the theme for the application
  │   ├── colors.js
  │   ├── global.js
  │   ├── typography.js
@@ -52,3 +56,13 @@ Easy way to make visual changes by using JavaScript.
 
 #### React Vis
 A composable chart library created by Uber
+
+### Skipped Due to Time Constrains
+- Loading status
+- Testing components
+- Making scroll to table on selecting chart
+- Making table responsive
+
+### Future Work
+- Use animations
+- Let the user filter the table (Search, Category, ID)

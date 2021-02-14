@@ -1,3 +1,3 @@
-import EfficiencySection from "./efficiency-section.component";
+import EfficiencySection from './efficiency-section.component';
 
 export default EfficiencySection;

@@ -1,10 +1,15 @@
 // Styles
 import {
-    TableContainer, TableData, TableDataRow, TableHead, TableHeadRow, TableHeadTH
-} from "./table.styles";
+    TableContainer,
+    TableData,
+    TableDataRow,
+    TableHead,
+    TableHeadRow,
+    TableHeadTH
+} from './table.styles';
 
 // Utilities
-import { Base } from "../../types";
+import { Base } from '../../types';
 
 
 interface Column<T> extends Base {
@@ -36,8 +41,6 @@ interface TableProps<T extends Base> {
 
 /**
  *  This component will display a Table
- * @param columns: Column<T>[]
- * @param data: T[]
  */
 const Table = <T extends Base>({  columns, data, selectedRowID}: TableProps<T>) => (
     <TableContainer>

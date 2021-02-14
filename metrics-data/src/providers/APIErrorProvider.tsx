@@ -3,7 +3,7 @@ import {
     createContext,
     ReactNode,
     useState
-} from "react";
+} from 'react';
 
 
 type Error = string | null;
@@ -27,7 +27,6 @@ interface ErrorProviderProps {
 
 /**
  *  Error provider to be used to show API errors
- * @param children
  */
 const APIErrorProvider = ({ children }: ErrorProviderProps) => {
     const [error, setError] = useState<Error>(null);

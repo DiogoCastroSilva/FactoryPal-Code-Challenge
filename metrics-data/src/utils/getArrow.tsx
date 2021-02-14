@@ -4,7 +4,7 @@ import {  ReactComponent as ArrowUp } from '../icons/arrow-up-outline.svg';
 import { colors } from '../theme';
 
 /**
- * Will return an arrow up or down
+ * Will return an arrow Up or Down
  */
 export const getArrow = (value: number, goal: number) => {
     if (value > goal) {

@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+// Libraries
+import { useEffect, useState } from 'react';
 
-import API from "../API";
-import { MetricsData } from "../types";
-import useAPIError from "./useAPIError";
+// Utilities
+import API from '../API';
+import { MetricsData } from '../types';
+import useAPIError from './useAPIError';
 
 
 /**

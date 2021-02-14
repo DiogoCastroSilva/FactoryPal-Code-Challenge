@@ -1,3 +1,6 @@
+/**
+ * API interface section
+ */
 export interface Base {
     id: string;
 }
@@ -18,10 +21,15 @@ export interface APIData<T> {
     data: Array<T>;
 }
 
-export interface ChartData extends Base {
-    angle: number;
-    label: string;
-    style: {
-        fill: string;
+/**
+ *  Interface of the Chart, react vis doesn't provide
+ */
+export interface ChartData {
+    id?: string;
+    angle?: number;
+    label?: string;
+    style?: {
+        fill?: string;
+        stroke?: string
     }
 };

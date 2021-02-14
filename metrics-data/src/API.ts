@@ -1,4 +1,4 @@
-import { APIData, MetricsData } from "./types";
+import { APIData, MetricsData } from './types';
 
 import { data } from './fakeData';
 
