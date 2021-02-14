@@ -1,3 +1,3 @@
-import Alert from "./alert.component";
+import Alert from './alert.component';
 
 export default Alert;

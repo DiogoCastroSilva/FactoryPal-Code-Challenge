@@ -15,18 +15,36 @@ import useGetMetricsData from '../../hooks/useGetMetricsData';
 import { MetricsData } from '../../types';
 
 
+
 export type CategoriesMap = { [key: string]: MetricsData[] };
 
 /**
  * This is the Shell of this application, will contain all the logic to display the data
  */
 const Shell = () => {
-    const { metricsData, isLoading } = useGetMetricsData();
+    const { metricsData } = useGetMetricsData();
 
     const [selectedDataPointID, setSelectedDataPointID] = useState<string>();
     const [categoriesMap, setCategoriesMap] = useState<CategoriesMap>();
 
-
+    /**
+     * Will create an Object set of category -> object:
+    *  Example:
+    *       {
+    *           efficiency: {
+    *               id: 'oee',
+    *               value: 65,
+    *               ...
+    *           },
+    *           {
+    *               downtime: {
+    *                   id: 'unexpected',
+    *                   value: -230,
+    *                   ...
+    *               }
+    *           }
+    *       }
+     */
     useEffect(() => {
         if (metricsData && metricsData.length > 0) {
            const catMap = metricsData.reduce<CategoriesMap>((acc: CategoriesMap, {category, ...rest}) => {
@@ -43,6 +61,10 @@ const Shell = () => {
 
     }, [metricsData]);
 
+    /**
+     * Selects the row in the table with the input id
+     * @param id point ID
+     */
     const setSelectedDataPointHandler = (id: string) => {
         setSelectedDataPointID(id);
     };
@@ -55,6 +77,7 @@ const Shell = () => {
                     if (key) {
                         if (key === 'efficiency') {
                                return <EfficiencySection
+                                    key='efficiency'
                                     data={categoriesMap['efficiency']}
                                     onChartClick={setSelectedDataPointHandler}
                                 />
@@ -62,6 +85,7 @@ const Shell = () => {
 
                         if (key === 'shift') {
                                 return <ShiftSection
+                                    key='shift'
                                     data={categoriesMap['shift']}
                                     onChartClick={setSelectedDataPointHandler}
                                 />
@@ -69,6 +93,7 @@ const Shell = () => {
 
                         if (key === 'downtime') {
                             return <DowntimeSection
+                                            key='downtime'
                                             data={categoriesMap['downtime']}
                                             onChartClick={setSelectedDataPointHandler}
                                         />

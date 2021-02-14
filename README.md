@@ -22,11 +22,12 @@ src/
  ├── components/ ................. the app building blocks
  │   └── ...
  │-- hooks/ ...................... custom Hooks
+ | -- icons/ ...................... contains svg icons
  │-- providers/ .................. custom Providers
  │   └── ...
  |-- utils/ ...................... utility functions
  |   └── ...
- ├── theme/
+ ├── theme/ ...................... the theme for the application
  │   ├── colors.js
  │   ├── global.js
  │   ├── typography.js

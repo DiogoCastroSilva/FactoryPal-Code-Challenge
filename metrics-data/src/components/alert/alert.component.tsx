@@ -24,9 +24,6 @@ interface AlertProps {
 
 /**
  * This component will display an alert on the top of the page
- * @param children
- *  @param type
- * @param open
  */
 const Alert: FC<AlertProps> = ({ children, type, open}) => {
     return open ? (

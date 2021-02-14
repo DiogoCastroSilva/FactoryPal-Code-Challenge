@@ -1,6 +1,5 @@
 // Libraries
 import { FC, useEffect, useState } from 'react';
-import { RadialChart } from 'react-vis';
 
 // Components
 import MetricsSection from '../metrics-section';
@@ -8,9 +7,11 @@ import MetricsCard from '../metrics-card';
 import MetricsCardValue from '../metrics-card-value';
 
 // Utilities
-import { getColorByCategory } from '../../utils/getColor';
 import { ChartData, MetricsData } from '../../types';
 import { getSecondsFromType } from '../../utils/getTime';
+import DonutChart from '../donut-chart';
+import { colors } from '../../theme';
+
 
 
 interface DowntimeSectionProps {
@@ -66,8 +67,8 @@ const DowntimeSection: FC<DowntimeSectionProps> = ({ data, onChartClick }) => {
                     angle: mechProblemsPercentage,
                     label: unexplained.label,
                     style: {
-                        fill: getColorByCategory('downtime'),
-                        stroke: 'black'
+                        fill: colors.orange,
+                        stroke: colors.transparent
                     }
                 },
                 {
@@ -75,8 +76,8 @@ const DowntimeSection: FC<DowntimeSectionProps> = ({ data, onChartClick }) => {
                     angle: unexplainedPercentage,
                     label: mechProblems.label,
                     style: {
-                        fill: getColorByCategory('downtime'),
-                        stroke: 'black'
+                        fill: colors.red,
+                        stroke: colors.transparent
                     }
                 }
             ];
@@ -108,18 +109,10 @@ const DowntimeSection: FC<DowntimeSectionProps> = ({ data, onChartClick }) => {
                 )}
                 renderChart={() => (
                     chartValues ? (
-                        <RadialChart
-                           height={200}
-                           width={200}
-                           showLabels={true}
-                           onValueClick={(e) => {
-                               console.log(e);
-                               if (e && e.id) {
-                                   onChartClick(e.id)
-                               }
-                           }}
-                           data={chartValues}
-                       />
+                        <DonutChart
+                            onChartClick={onChartClick}
+                            data={chartValues}
+                        />
                     ): null
                 )}
             />

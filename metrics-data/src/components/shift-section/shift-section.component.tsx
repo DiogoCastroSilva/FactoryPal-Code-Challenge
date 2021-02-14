@@ -1,6 +1,5 @@
 // Libraries
 import { FC, useEffect, useState } from 'react';
-import { RadialChart } from 'react-vis';
 
 // Components
 import MetricsSection from '../metrics-section';
@@ -9,8 +8,9 @@ import MetricsCardValue from '../metrics-card-value';
 
 // Utilities
 import { ChartData, MetricsData } from '../../types';
-import { getColorByCategory } from '../../utils/getColor';
 import { getSecondsFromType } from '../../utils/getTime';
+import DonutChart from '../donut-chart';
+import { colors } from '../../theme';
 
 
 interface ShiftSectionProps {
@@ -63,8 +63,8 @@ const ShiftSection: FC<ShiftSectionProps> = ({ data, onChartClick }) => {
                     angle: clShiftPercentage,
                     label: clnShift.label,
                     style: {
-                        fill: getColorByCategory('shift'),
-                        stroke: 'transparent'
+                        fill: colors.purple,
+                        stroke: colors.transparent
                     }
                 },
                 {
@@ -72,8 +72,8 @@ const ShiftSection: FC<ShiftSectionProps> = ({ data, onChartClick }) => {
                     angle: 1 - clShiftPercentage,
                     label: shiftDuration.label,
                     style: {
-                        fill: getColorByCategory(),
-                        stroke: 'transparent'
+                        fill: colors.lightPurple,
+                        stroke: colors.transparent
                     }
                 }
             ];
@@ -105,17 +105,9 @@ const ShiftSection: FC<ShiftSectionProps> = ({ data, onChartClick }) => {
             )}
             renderChart={() => (
                 chartValues ? (
-                    <RadialChart
-                            height={200}
-                            width={200}
-                            showLabels={true}
-                            onValueClick={(e) => {
-                                console.log(e);
-                                if (e && e.id) {
-                                    onChartClick(e.id)
-                                }
-                            }}
-                            data={chartValues}
+                    <DonutChart
+                        data={chartValues}
+                        onChartClick={onChartClick}
                     />
                 ) : null
             )}

@@ -40,7 +40,7 @@ interface TableDataRowProps {
 
 export const TableDataRow = styled.tr<TableDataRowProps>`
     border-bottom: thin solid ${colors.lightGrey};
-    background-color: ${ ({ active }) => active ? colors.yellow : 'transparent'};
+    background-color: ${ ({ active }) => active ? colors.yellow : colors.transparent};
 
     :last-of-type {
         border-bottom: medium solid ${colors.green};

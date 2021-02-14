@@ -1,3 +1,3 @@
-import MetricsCard from "./metrics-card.component";
+import MetricsCard from './metrics-card.component';
 
 export default MetricsCard;

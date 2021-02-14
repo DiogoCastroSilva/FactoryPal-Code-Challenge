@@ -1,9 +1,11 @@
 // Libraries
 import { FC } from 'react';
 
+// Styles
+import { MetricsCardContainer, MetricsChartContainer } from './metrics-section-styles';
+
 // Components
 import Section from '../section';
-import { MetricsCardContainer, MetricsChartContainer } from './metrics-section-styles';
 
 
 

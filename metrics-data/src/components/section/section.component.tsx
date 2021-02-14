@@ -1,8 +1,11 @@
-import { FC, ReactNode } from "react";
+// Libraries
+import { FC, ReactNode } from 'react';
+
+// Styles
 import {
     SectionContainer,
     SectionContentContainer
-} from "./section.styles";
+} from './section.styles';
 
 
 interface SectionProps {

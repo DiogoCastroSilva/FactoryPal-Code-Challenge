@@ -2,7 +2,7 @@
 import { FC } from 'react';
 
 // Components
-import MetricsTable from "../metrics-table";
+import MetricsTable from '../metrics-table';
 
 // Utilities
 import { MetricsData } from '../../types';

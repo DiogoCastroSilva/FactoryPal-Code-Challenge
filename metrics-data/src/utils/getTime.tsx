@@ -1,4 +1,4 @@
-import { ValueType } from "../types";
+import { ValueType } from '../types';
 
 /**
  * Converts a time value to seconds

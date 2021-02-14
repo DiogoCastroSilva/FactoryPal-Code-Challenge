@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+// Utilities
 import { getColorByAlertType } from '../../utils/getColor';
 import { AlertType } from './alert.component';
 
